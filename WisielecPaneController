@@ -1,0 +1,45 @@
+package pl.szymonM.wisielec.controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+
+import java.io.IOException;
+
+public class WisielecPaneController {
+
+
+    @FXML
+     VBox rootPane;
+
+    @FXML
+    public Button exitButton;
+
+    @FXML
+    public Button playButton;
+
+    @FXML
+    public Text titleText;
+
+
+
+    public void initialize(){
+    }
+
+    @FXML
+    private void loadSecond(ActionEvent event) throws IOException {
+        VBox gamePane = FXMLLoader.load(getClass().getResource("/GamePaneFxml.fxml"));
+        rootPane.getChildren().setAll(gamePane);
+        GamePaneController gamePaneController = new GamePaneController();
+        gamePaneController.guessWordArea.setText("ABC123");
+
+
+    }
+
+
+
+
+}
