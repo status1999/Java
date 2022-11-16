@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.szymonM.wisielec.controller.WisielecPaneController">
+   <children>
+      <Label fx:id="guessWordArea" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="320.0" text="abc" textAlignment="CENTER">
+         <font>
+            <Font name="Calibri" size="44.0" />
+         </font>
+      </Label>
+      <Label fx:id="lifeCounterArea" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="320.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font name="Calibri" size="44.0" />
+         </font>
+      </Label>
+      <TextField fx:id="guessCharArea" alignment="CENTER" prefHeight="31.0" prefWidth="320.0" promptText="Wprowadź znak" />
+      <HBox alignment="BOTTOM_LEFT" maxWidth="1.7976931348623157E308" prefHeight="155.0" prefWidth="320.0">
+         <children>
+            <Button fx:id="exitButton" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" text="Wyjdź" HBox.hgrow="ALWAYS" />
+            <Button fx:id="confirmCharButton" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" text="Zatwierdź znak" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
