@@ -1,0 +1,94 @@
+package pl.szymonM.wisielec.controller;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import pl.szymonM.wisielec.app.WordsDatabase;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+
+public class GamePaneController {
+
+    @FXML
+    VBox rootPane;
+
+    @FXML
+    public Button confirmCharButton;
+
+    @FXML
+    public Button exitButton;
+
+    @FXML
+    public TextField guessCharArea;
+
+    @FXML
+    public Label guessWordArea;
+
+    @FXML
+    public Label lifeCounterArea;
+
+
+    public void initialize(){
+        System.out.println("123");
+
+    }
+
+    String[] createAsteriskWord(WordsDatabase database){
+        String word = database.drawAWord(database.words);
+        String asteriskWord = "*";
+        for (int i = 0; i < word.length() - 1; i++) {
+            asteriskWord += "*";
+        }
+        String guessWords[] = {word, asteriskWord};
+        return guessWords;
+    }
+
+    public void guessAWord(){
+        String guessWord;
+        StringBuilder asterisk = new StringBuilder();
+        WordsDatabase database = new WordsDatabase();
+        Scanner input = new Scanner(System.in);
+
+
+        String guessWords[] = createAsteriskWord(database);
+        guessWord = guessWords[0];
+        guessWord = guessWord.toLowerCase();
+
+        byte array[] = guessWord.getBytes();
+        asterisk = asterisk.append(guessWords[1]);
+        int lifeCounter = 7;
+
+        while(lifeCounter > 0 && !guessWord.equals(asterisk.toString())){
+            System.out.println("Wprowadź znak");
+
+            System.out.println(asterisk);
+            String guessChar = input.next();
+            byte guessArray[] = guessChar.getBytes();
+            if (!guessWord.contains(guessChar)) {
+                lifeCounter--;
+            }
+
+            for (int i = 0; i < guessWord.length(); i++) {
+
+                if (guessArray[0] == array[i]){
+                    asterisk.setCharAt(i,guessChar.toLowerCase().charAt(0));
+                }
+            }
+            lifeCounterArea.setText("Ilość pozostałych żyć: " + lifeCounter);
+            System.out.println("Ilość pozostałych żyć: " + lifeCounter);
+        }
+        if (lifeCounter > 0 ){
+            System.out.println("Brawo, udało Ci się zgadnąć słowo!");
+        }   else    {
+            System.out.println("Niestety, nie udało Ci się zgadnąć słowa!");
+        }
+    }
+
+
+
+}
